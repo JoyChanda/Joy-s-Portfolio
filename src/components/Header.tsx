@@ -31,7 +31,7 @@ export default function Header() {
         <motion.div
           whileHover={{ scale: 1.05 }}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="text-primary font-mono text-xl font-bold border-2 border-primary px-2 py-1 cursor-pointer"
+          className="text-primary font-mono text-xl font-bold border-2 border-primary px-2 py-1 cursor-pointer ml-1 md:ml-0"
         >
           J
         </motion.div>
