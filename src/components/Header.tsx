@@ -62,6 +62,8 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
             href={JOYS_INFO.resume}
+            target="_blank"
+            rel="noopener noreferrer"
             className="border border-primary text-primary px-4 py-2 rounded-md font-mono text-sm hover:bg-primary-light transition-colors duration-300"
           >
             Resume
@@ -72,6 +74,8 @@ export default function Header() {
         <div className="flex md:hidden items-center space-x-4">
           <motion.a
             href={JOYS_INFO.resume}
+            target="_blank"
+            rel="noopener noreferrer"
             className="border border-primary text-primary px-3 py-1.5 rounded-md font-mono text-xs hover:bg-primary-light transition-colors duration-300"
           >
             Resume
