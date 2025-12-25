@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { JOYS_INFO, NAV_LINKS } from "@/constants/info";
 import { Menu, X } from "lucide-react";
+import Logo from "./Logo";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -39,13 +40,10 @@ export default function Header() {
       }`}
     >
       <nav className="container mx-auto px-6 md:px-12 flex justify-between items-center">
-        <motion.div
-          whileHover={{ scale: 1.05 }}
+        <Logo 
+          className="cursor-pointer ml-1 md:ml-0 scale-[0.8] md:scale-100"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="text-primary font-mono text-xl font-bold border-2 border-primary px-2 py-1 cursor-pointer ml-1 md:ml-0"
-        >
-          J
-        </motion.div>
+        />
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
