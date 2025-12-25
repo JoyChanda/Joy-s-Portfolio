@@ -26,11 +26,13 @@ export default function Header() {
       <nav className="container mx-auto px-6 md:px-12 flex justify-between items-center">
         <motion.div
           whileHover={{ scale: 1.05 }}
-          className="text-primary font-mono text-xl font-bold border-2 border-primary px-2 py-1"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="text-primary font-mono text-xl font-bold border-2 border-primary px-2 py-1 cursor-pointer ml-4 md:ml-0"
         >
           J
         </motion.div>
 
+        {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
           <ul className="flex space-x-8">
             {NAV_LINKS.map((link, index) => (
@@ -62,8 +64,17 @@ export default function Header() {
           </motion.a>
         </div>
 
-        {/* Mobile menu button could go here */}
+        {/* Mobile Navigation (Resume Button always visible) */}
+        <div className="flex md:hidden items-center space-x-4">
+          <motion.a
+            href={JOYS_INFO.resume}
+            className="border border-primary text-primary px-3 py-1.5 rounded-md font-mono text-xs hover:bg-primary-light transition-colors duration-300"
+          >
+            Resume
+          </motion.a>
+        </div>
       </nav>
     </motion.header>
   );
 }
+

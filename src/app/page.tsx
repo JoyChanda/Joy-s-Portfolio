@@ -6,6 +6,8 @@ import SocialBar from "@/components/SocialBar";
 import About from "@/components/About";
 import Projects from "@/components/Projects";
 import Education from "@/components/Education";
+import Contact from "@/components/Contact";
+import ScrollToTop from "@/components/ScrollToTop";
 import ThisCantBeReached from "@/components/ThisCantBeReached";
 import Startup from "@/components/Startup";
 import { useApp } from "@/context/AppContext";
@@ -48,15 +50,11 @@ export default function Home() {
             <About />
             <Projects />
             <Education />
+            <Contact />
+            <ScrollToTop />
           </div>
         </>
       )}
     </main>
   );
 }
-
-
-
-
-
-
