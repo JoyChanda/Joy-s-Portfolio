@@ -2,6 +2,7 @@ import Hero from "@/components/Hero";
 import Header from "@/components/Header";
 import SocialBar from "@/components/SocialBar";
 import About from "@/components/About";
+import Projects from "@/components/Projects";
 
 export default function Home() {
   return (
@@ -11,10 +12,12 @@ export default function Home() {
       <div className="w-full">
         <Hero />
         <About />
+        <Projects />
       </div>
     </main>
   );
 }
+
 
 
 
