@@ -9,6 +9,11 @@ export const JOYS_INFO = {
     facebook: "https://facebook.com/demo",
     instagram: "https://instagram.com/demo",
   },
+  contactDetails: {
+    phone: "+880-1XXXXXXX",
+    location: "Chattogram, Bangladesh",
+    availability: "Open to freelance / full-time opportunities",
+  },
   resume: "#",
   skills: {
     languages: ["C Program", "Python (Basic)"],
