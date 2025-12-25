@@ -29,11 +29,11 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className={`relative grid grid-cols-1 md:grid-cols-12 items-center gap-4`}
+            className={`relative grid grid-cols-1 md:grid-cols-12 items-center gap-4 group`}
           >
             {/* Project Image */}
             <div
-              className={`md:col-span-7 relative group ${
+              className={`md:col-span-7 relative ${
                 index % 2 === 0 ? "md:order-1" : "md:order-2 md:col-start-6"
               }`}
             >
@@ -41,17 +41,18 @@ export default function Projects() {
                 href={project.live}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block relative aspect-[16/10] bg-primary/20 rounded-lg overflow-hidden"
+                className="block relative aspect-[16/10] bg-primary/10 rounded-lg overflow-hidden"
               >
-                <div className="absolute inset-0 bg-primary/40 group-hover:bg-transparent transition-all duration-300 z-10"></div>
+                <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-all duration-300 z-10"></div>
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
-                  className="object-cover grayscale hover:grayscale-0 transition-all duration-500 rounded-lg"
+                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500 rounded-lg scale-105 group-hover:scale-100"
                 />
               </a>
             </div>
+
 
 
             {/* Project Content */}
