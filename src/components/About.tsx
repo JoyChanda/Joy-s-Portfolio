@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { JOYS_INFO } from "@/constants/info";
 
 export default function About() {
@@ -27,8 +28,9 @@ export default function About() {
         <div className="h-[1px] bg-text-dim/30 flex-grow ml-4 md:ml-8 max-w-xs"></div>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-        <div className="md:col-span-2">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+        {/* Text Section */}
+        <div className="md:col-span-2 order-1">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -56,59 +58,57 @@ export default function About() {
                 </li>
               ))}
             </ul>
-
-            <div className="mt-10">
-              <a
-                href="#work"
-                className="inline-block border border-primary text-primary px-6 py-3 rounded-md font-mono text-sm hover:bg-primary-light transition-colors duration-300"
-              >
-                Check out my work!
-              </a>
-            </div>
           </motion.div>
         </div>
 
+        {/* Image Section - Last on Mobile, Right on Desktop */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           viewport={{ once: true }}
-          className="relative group hidden md:block"
+          className="relative group block mx-auto md:mx-0 w-64 h-64 md:w-full md:h-auto md:aspect-square order-3 md:order-2"
         >
           <div className="relative z-10 w-full aspect-square border-2 border-primary rounded-md group-hover:-translate-x-2 group-hover:-translate-y-2 transition-transform duration-300">
-             {/* This would be your image. Using a placeholder color for now */}
-            <div className="w-full h-full bg-primary/20 rounded-md"></div>
+            <div className="relative w-full h-full overflow-hidden rounded-md">
+              <Image 
+                src="/JC.png" 
+                alt="Joy Chanda" 
+                fill
+                className="object-cover transition-all duration-300"
+              />
+            </div>
           </div>
-          <div className="absolute top-4 left-4 -z-0 w-full aspect-square border-2 border-primary/30 rounded-md group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-300"></div>
+          <div className="absolute top-4 left-4 -z-0 w-full aspect-square border-2 border-primary/30 bg-primary/5 rounded-md group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-300"></div>
+        </motion.div>
+
+        {/* Other Skills Section - Middle on Mobile, Bottom on Desktop */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="md:col-span-2 order-2 md:order-3 mt-4 md:mt-8"
+        >
+          <div className="p-6 rounded-lg bg-background-light border border-text-dim/10 hover:border-primary/50 transition-colors duration-300">
+            <h3 className="text-text-bright font-bold mb-4 text-xl">Other Skills</h3>
+            <div className="space-y-4">
+              <div>
+                <p className="text-primary font-mono text-xs mb-2 uppercase tracking-widest">Languages</p>
+                <div className="flex flex-wrap gap-2 text-sm text-text-dim">
+                  {JOYS_INFO.skills.languages.join(", ")}
+                </div>
+              </div>
+              <div>
+                <p className="text-primary font-mono text-xs mb-2 uppercase tracking-widest">UI/UX Design</p>
+                <div className="flex flex-wrap gap-2 text-sm text-text-dim">
+                  {JOYS_INFO.skills.uiux.join(", ")}
+                </div>
+              </div>
+            </div>
+          </div>
         </motion.div>
       </div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-        viewport={{ once: true }}
-        className="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-      >
-        {/* Languages & UI/UX Card */}
-        <div className="p-6 rounded-lg bg-background-light border border-text-dim/10 hover:border-primary/50 transition-colors duration-300">
-          <h3 className="text-text-bright font-bold mb-4 text-xl">Other Skills</h3>
-          <div className="space-y-4">
-            <div>
-              <p className="text-primary font-mono text-xs mb-2 uppercase tracking-widest">Languages</p>
-              <div className="flex flex-wrap gap-2 text-sm text-text-dim">
-                {JOYS_INFO.skills.languages.join(", ")}
-              </div>
-            </div>
-            <div>
-              <p className="text-primary font-mono text-xs mb-2 uppercase tracking-widest">UI/UX Design</p>
-              <div className="flex flex-wrap gap-2 text-sm text-text-dim">
-                {JOYS_INFO.skills.uiux.join(", ")}
-              </div>
-            </div>
-          </div>
-        </div>
-      </motion.div>
     </section>
   );
 }

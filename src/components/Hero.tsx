@@ -33,7 +33,7 @@ export default function Hero() {
         </h2>
         <div className="h-[40px] md:h-[70px] flex items-center pt-1 md:pt-2">
           <img 
-            src="https://readme-typing-svg.demolab.com?font=Poppins&weight=700&size=42&pause=1200&color=64ffda&center=false&vCenter=true&width=650&lines=a+Frontend+Developer;a+MERN+Stack+Developer;a+UI%2FUX+Designer;Designing+Clean+User+Experiences" 
+            src="https://readme-typing-svg.demolab.com?font=Poppins&weight=700&size=42&pause=1200&color=64ffda&center=false&vCenter=true&width=650&lines=a+Frontend+Developer;a+MERN+Stack+Developer;a+UI%2FUX+Designer" 
             alt="Typing Animation"
             className="h-full w-auto object-contain"
           />
