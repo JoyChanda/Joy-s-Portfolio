@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Joy Chanda - Full Stack Developer Portfolio
 
-## Getting Started
+Welcome to my professional portfolio! This website is built with **Next.js**, **TypeScript**, and **Tailwind CSS**, featuring a premium design inspired by modern web aesthetics.
 
-First, run the development server:
+## 🚀 Live Demo
+Check out the live version of my portfolio here: **[Live Link Placeholder]**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ✨ Features
+- **Premium Animations:** Smooth scroll animations and element transitions using Framer Motion.
+- **Initial Error Animation:** A specialized "This Site Can't Be Reached" error sequence that transitions into the main site, inspired by classic web experiences.
+- **Glassmorphism UI:** Modern navigation and components with blur effects and semi-transparent layers.
+- **Responsive Design:** Fully optimized for mobile, tablet, and desktop devices.
+- **Featured Projects:** Showcasing my best work with interactive thumbnails and detailed descriptions.
+- **Education Timeline:** A structured vertical timeline of my academic background.
+
+## 🛠️ Tech Stack
+- **Framework:** [Next.js](https://nextjs.org/) (App Router)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/)
+- **Icons:** [Lucide React](https://lucide.dev/)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+
+## 📂 Project Structure
+```text
+src/
+├── app/            # Next.js App Router routes and global styles
+├── components/     # Reusable UI components (Hero, About, Projects, Education, etc.)
+├── context/        # Global state management (AppContext)
+├── constants/      # Static data and personal information
+└── public/         # Static assets (Images, project thumbnails)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerequisites
+- Node.js (v18 or higher)
+- npm or yarn
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/JoyChanda/joy-portfolio.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd joy-portfolio
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-## Learn More
+## 👤 About Me
+I aspire to work in a professional, goal-oriented organization where I can effectively apply my knowledge and skills. I am confident in my ability to adapt to new environments and support the team with my capabilities. My objective is to grow through continuous learning, enabling me to contribute to the company's success.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📧 Contact Me
+- **Email:** chandajoy1420@gmail.com
+- **LinkedIn:** [joy-chanda](https://www.linkedin.com/in/joy-chanda/)
+- **GitHub:** [JoyChanda](https://github.com/JoyChanda)
