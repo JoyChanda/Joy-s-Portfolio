@@ -48,7 +48,7 @@ export default function Projects() {
                   src={project.image}
                   alt={project.title}
                   fill
-                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500 rounded-lg scale-105 group-hover:scale-100"
+                  className="object-contain grayscale group-hover:grayscale-0 transition-all duration-500 rounded-lg scale-[0.98] group-hover:scale-100 p-2"
                 />
               </a>
             </div>

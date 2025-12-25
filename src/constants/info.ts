@@ -5,9 +5,7 @@ export const JOYS_INFO = {
   socials: {
     github: "https://github.com/JoyChanda",
     linkedin: "https://www.linkedin.com/in/joy-chanda/",
-    twitter: "https://twitter.com/demo",
-    facebook: "https://facebook.com/demo",
-    instagram: "https://instagram.com/demo",
+    whatsapp: "https://wa.me/8801794245500",
   },
   contactDetails: {
     phone: "+880-1794245500",
