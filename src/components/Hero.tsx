@@ -22,14 +22,25 @@ export default function Hero() {
         Joy Chanda.
       </motion.h1>
 
-      <motion.h2
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.4 }}
-        className="text-text-dim text-4xl md:text-6xl font-bold mb-8"
+        className="flex flex-col md:flex-row items-start md:items-center mb-8 space-y-2 md:space-y-0"
       >
-        I build things for the web.
-      </motion.h2>
+        <h2 className="text-text-dim text-4xl md:text-6xl font-bold mr-3 whitespace-nowrap leading-tight">
+          I am
+        </h2>
+        <div className="h-[40px] md:h-[70px] flex items-center pt-1 md:pt-2">
+          <img 
+            src="https://readme-typing-svg.demolab.com?font=Poppins&weight=700&size=42&pause=1200&color=64ffda&center=false&vCenter=true&width=650&lines=a+Frontend+Developer;a+MERN+Stack+Developer;a+UI%2FUX+Designer;Designing+Clean+User+Experiences" 
+            alt="Typing Animation"
+            className="h-full w-auto object-contain"
+          />
+        </div>
+      </motion.div>
+
+
 
       <motion.p
         initial={{ opacity: 0, y: 20 }}
