@@ -18,7 +18,6 @@ export default function Contact() {
         className="text-center mb-16"
       >
         <div className="flex items-center justify-center mb-4">
-          <span className="text-primary font-mono text-xl mr-2">04.</span>
           <h2 className="text-text-bright text-3xl md:text-4xl font-bold">Get In Touch</h2>
         </div>
         <p className="text-text-dim text-lg max-w-lg mx-auto">

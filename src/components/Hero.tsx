@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex flex-col justify-center px-6 md:px-24 lg:px-48 bg-background-dark">
+    <section className="min-h-screen flex flex-col justify-center pt-32 md:pt-0 px-6 md:px-24 lg:px-48 bg-background-dark">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -59,7 +59,7 @@ export default function Hero() {
         transition={{ duration: 0.5, delay: 0.6 }}
       >
         <a
-          href="#projects"
+          href="#work"
           className="inline-block border-2 border-primary text-primary px-8 py-4 rounded-md font-mono hover:bg-primary-light transition-colors duration-300"
         >
           Check out my work!

@@ -12,7 +12,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-24 pt-32 md:pt-24 px-6 md:px-24 lg:px-48 bg-background-dark max-w-6xl mx-auto">
+    <section id="about" className="py-24 pt-48 md:pt-24 px-6 md:px-24 lg:px-48 bg-background-dark max-w-6xl mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -56,6 +56,15 @@ export default function About() {
                 </li>
               ))}
             </ul>
+
+            <div className="mt-10">
+              <a
+                href="#work"
+                className="inline-block border border-primary text-primary px-6 py-3 rounded-md font-mono text-sm hover:bg-primary-light transition-colors duration-300"
+              >
+                Check out my work!
+              </a>
+            </div>
           </motion.div>
         </div>
 

@@ -10,11 +10,11 @@ export const JOYS_INFO = {
     instagram: "https://instagram.com/demo",
   },
   contactDetails: {
-    phone: "+880-1XXXXXXX",
+    phone: "+880-1794245500",
     location: "Chattogram, Bangladesh",
     availability: "Open to freelance / full-time opportunities",
   },
-  resume: "#",
+  resume: "/resume.pdf",
   skills: {
     languages: ["C Program", "Python (Basic)"],
     web: ["HTML", "CSS", "JavaScript"],
@@ -30,7 +30,7 @@ export const JOYS_INFO = {
       tech: ["React JS", "Tailwind CSS", "Firebase", "MongoDB"],
       github: "https://github.com/JoyChanda/Care.io",
       live: "https://care-io-eta.vercel.app/",
-      image: "/projects/care-io.png", // USER can add image later
+      image: "/projects/care-io.png",
     },
     {
       title: "InsightBoard",
