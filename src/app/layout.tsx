@@ -38,6 +38,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${lato.variable} ${playfair.variable} ${arimo.variable} ${firaCode.variable} antialiased`}
+        suppressHydrationWarning={true}
       >
         <AppProvider>
           {children}

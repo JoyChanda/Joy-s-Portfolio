@@ -13,22 +13,30 @@ export default function ThisCantBeReached() {
   }, []);
 
   const getCenterOffset = () => {
+    if (dimensions.width === 0) return { x: 0, y: 0 };
+    
     let x = 0;
     let y = 0;
     
+    // Adjust y to center vertically in available space
     if (dimensions.height > 640) y = dimensions.height / 2 - 180;
-    else y = dimensions.height / 2 - 84;
+    else y = dimensions.height / 2 - 100;
 
+    // Adjust x to center horizontally in available space (considering px-6 padding)
     if (dimensions.width > 1280) x = dimensions.width / 2 - 402;
     else if (dimensions.width > 1024) x = dimensions.width / 2 - 210;
     else if (dimensions.width > 768) x = dimensions.width / 2 - 162;
     else if (dimensions.width > 640) x = dimensions.width / 2 - 114;
-    else x = dimensions.width / 2 - 34;
+    else x = (dimensions.width - 48) / 2 - 18; // 48 is px-6 total, 18 is half of dino width
 
     return { x, y };
   };
 
   const { x, y } = getCenterOffset();
+
+  // Don't render until dimensions are set to avoid flashing at wrong positions
+  if (dimensions.width === 0) return <div className="fixed inset-0 bg-white z-[100]" />;
+
 
   return (
     <motion.div
@@ -78,8 +86,8 @@ export default function ThisCantBeReached() {
         </motion.div>
 
         <motion.span
-          initial={{ y: y + 30, x: x - 13, opacity: 0 }}
-          animate={{ y: y + 50, opacity: 1 }}
+          initial={{ y: y + 55, x: x - 10, opacity: 0 }}
+          animate={{ y: y + 75, opacity: 1 }}
           transition={{ delay: 3.5, duration: 0.3 }}
           className="absolute font-bold text-gray-600 text-2xl whitespace-nowrap"
         >
