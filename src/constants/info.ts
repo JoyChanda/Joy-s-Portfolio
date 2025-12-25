@@ -9,8 +9,17 @@ export const JOYS_INFO = {
     facebook: "https://facebook.com/demo",
     instagram: "https://instagram.com/demo",
   },
-  resume: "#", // Placeholder for now
+  resume: "#",
+  skills: {
+    languages: ["C Program", "Python (Basic)"],
+    web: ["HTML", "CSS", "JavaScript"],
+    frameworks: ["React JS", "Bootstrap", "Tailwind CSS"],
+    database: ["MongoDB"],
+    uiux: ["Figma", "Canva"],
+    tools: ["Git", "GitHub"],
+  },
 };
+
 
 export const NAV_LINKS = [
   { name: "About", href: "#about" },
