@@ -52,7 +52,28 @@ export const JOYS_INFO = {
       image: "/projects/hero-apps.png",
     },
   ],
+  education: [
+    {
+      degree: "Bachelors of Science (B.Sc)",
+      institution: "Chittagong Independent University (CIU)",
+      details: "CGPA: 3.07 out of 4 | Major: CSE",
+      year: "2023",
+    },
+    {
+      degree: "Higher Secondary School Certificate (HSC)",
+      institution: "Karnafuli Govt. College, Kaptai",
+      details: "GPA: 3.58 out of 5 | Group: Science",
+      year: "2018",
+    },
+    {
+      degree: "Secondary School Certificate (SSC)",
+      institution: "Nasirabad Govt. Boys School, Chattogram",
+      details: "GPA: 4.78 out of 5 | Group: Science",
+      year: "2016",
+    },
+  ],
 };
+
 
 
 
