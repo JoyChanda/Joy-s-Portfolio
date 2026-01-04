@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import { JOYS_INFO } from "@/constants/info";
 
 export default function Hero() {
   return (
@@ -40,8 +41,6 @@ export default function Hero() {
         </div>
       </motion.div>
 
-
-
       <motion.p
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -57,10 +56,19 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.6 }}
+        className="flex flex-wrap gap-4"
       >
         <a
-          href="#work"
+          href={JOYS_INFO.resume}
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-block border-2 border-primary text-primary px-8 py-4 rounded-md font-mono hover:bg-primary-light transition-colors duration-300"
+        >
+          Download Resume
+        </a>
+        <a
+          href="#work"
+          className="inline-block bg-primary/10 text-primary px-8 py-4 rounded-md font-mono border border-primary/20 hover:bg-primary/20 transition-colors duration-300"
         >
           Check out my work!
         </a>
