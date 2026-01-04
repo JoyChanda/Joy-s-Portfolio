@@ -5,13 +5,6 @@ import Image from "next/image";
 import { JOYS_INFO } from "@/constants/info";
 
 export default function About() {
-  const allSkills = [
-    ...JOYS_INFO.skills.web,
-    ...JOYS_INFO.skills.frameworks,
-    ...JOYS_INFO.skills.database,
-    ...JOYS_INFO.skills.tools,
-  ];
-
   return (
     <section id="about" className="py-24 pt-48 md:pt-24 px-6 md:px-24 lg:px-48 bg-background-dark max-w-6xl mx-auto">
       <motion.div
@@ -51,28 +44,16 @@ export default function About() {
               I am confident in my ability to adapt to new environments and support the team with my capabilities. 
               My objective is to grow through continuous learning, enabling me to contribute to the company's success.
             </p>
-            <p>
-              Here are a few technologies I&apos;ve been working with recently:
-            </p>
-
-            <ul className="grid grid-cols-2 gap-2 mt-6 font-mono text-sm">
-              {allSkills.slice(0, 10).map((skill, index) => (
-                <li key={index} className="flex items-center space-x-2">
-                  <span className="text-primary text-[10px]">▹</span>
-                  <span>{skill}</span>
-                </li>
-              ))}
-            </ul>
           </motion.div>
         </div>
 
-        {/* Image Section - Last on Mobile, Right on Desktop */}
+        {/* Image Section - Right on Desktop */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           viewport={{ once: true }}
-          className="relative group block mx-auto md:mx-0 w-64 h-64 md:w-full md:h-auto md:aspect-square order-3 md:order-2"
+          className="relative group block mx-auto md:mx-0 w-64 h-64 md:w-full md:h-auto md:aspect-square order-2"
         >
           <div className="relative z-10 w-full aspect-square border-2 border-primary rounded-md group-hover:-translate-x-2 group-hover:-translate-y-2 transition-transform duration-300">
             <div className="relative w-full h-full overflow-hidden rounded-md">
@@ -85,33 +66,6 @@ export default function About() {
             </div>
           </div>
           <div className="absolute top-4 left-4 -z-0 w-full aspect-square border-2 border-primary/30 bg-primary/5 rounded-md group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-300"></div>
-        </motion.div>
-
-        {/* Other Skills Section - Middle on Mobile, Bottom on Desktop */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="md:col-span-2 order-2 md:order-3 mt-4 md:mt-8"
-        >
-          <div className="p-6 rounded-lg bg-background-light border border-text-dim/10 hover:border-primary/50 transition-colors duration-300">
-            <h3 className="text-text-bright font-bold mb-4 text-xl">Other Skills</h3>
-            <div className="space-y-4">
-              <div>
-                <p className="text-primary font-mono text-xs mb-2 uppercase tracking-widest">Languages</p>
-                <div className="flex flex-wrap gap-2 text-sm text-text-dim">
-                  {JOYS_INFO.skills.languages.join(", ")}
-                </div>
-              </div>
-              <div>
-                <p className="text-primary font-mono text-xs mb-2 uppercase tracking-widest">UI/UX Design</p>
-                <div className="flex flex-wrap gap-2 text-sm text-text-dim">
-                  {JOYS_INFO.skills.uiux.join(", ")}
-                </div>
-              </div>
-            </div>
-          </div>
         </motion.div>
       </div>
     </section>

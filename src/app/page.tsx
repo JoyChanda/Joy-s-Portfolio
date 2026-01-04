@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import SocialBar from "@/components/SocialBar";
 import About from "@/components/About";
 import Projects from "@/components/Projects";
+import Skills from "@/components/Skills";
 import Education from "@/components/Education";
 import Contact from "@/components/Contact";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -48,6 +49,7 @@ export default function Home() {
           <div className="w-full">
             <Hero />
             <About />
+            <Skills />
             <Projects />
             <Education />
             <Contact />

@@ -15,7 +15,7 @@ export default function Education() {
         className="flex items-center mb-16"
       >
         <h2 className="text-text-bright text-2xl md:text-3xl font-bold flex items-center">
-          <span className="text-primary font-mono text-xl mr-2">03.</span>
+          <span className="text-primary font-mono text-xl mr-2">04.</span>
           Education
         </h2>
         <div className="h-[1px] bg-text-dim/30 flex-grow ml-4 md:ml-8 max-w-xs"></div>

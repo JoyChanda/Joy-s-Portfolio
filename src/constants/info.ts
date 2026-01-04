@@ -14,12 +14,32 @@ export const JOYS_INFO = {
   },
   resume: "/resume.pdf",
   skills: {
-    languages: ["C Program", "Python (Basic)"],
-    web: ["HTML", "CSS", "JavaScript"],
-    frameworks: ["React JS", "Bootstrap", "Tailwind CSS"],
-    database: ["MongoDB"],
-    uiux: ["Figma", "Canva"],
-    tools: ["Git", "GitHub"],
+    frontend: [
+      { name: "HTML", level: 95 },
+      { name: "CSS", level: 90 },
+      { name: "JavaScript", level: 85 },
+      { name: "React JS", level: 80 },
+      { name: "Next JS", level: 75 },
+      { name: "Tailwind CSS", level: 90 },
+      { name: "Bootstrap", level: 85 },
+    ],
+    backend: [
+      { name: "Node JS", level: 70 },
+      { name: "Express JS", level: 75 },
+      { name: "MongoDB", level: 70 },
+      { name: "Firebase", level: 80 },
+    ],
+    tools: [
+      { name: "Git", level: 85 },
+      { name: "GitHub", level: 90 },
+      { name: "Figma", level: 75 },
+      { name: "Canva", level: 80 },
+      { name: "Vercel", level: 85 },
+    ],
+    languages: [
+      { name: "C Program", level: 75 },
+      { name: "Python", level: 60 },
+    ],
   },
   about: {
     journey: "My programming journey started back in university while pursuing my B.Sc in CSE. I was fascinated by how code could solve real-world problems. Starting with C and Python basics, I eventually found my passion in Web Development, specifically the MERN stack. I've spent countless hours building projects, debugging, and learning new frameworks to polish my skills.",
@@ -95,7 +115,8 @@ export const JOYS_INFO = {
 
 export const NAV_LINKS = [
   { name: "About", href: "#about" },
-  { name: "Experience", href: "#experience" },
+  { name: "Skills", href: "#skills" },
   { name: "Work", href: "#work" },
+  { name: "Education", href: "#experience" },
   { name: "Contact", href: "#contact" },
 ];

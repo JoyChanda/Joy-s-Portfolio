@@ -25,7 +25,7 @@ export default function Contact() {
       >
         <div className="flex items-center justify-center mb-4">
           <h2 className="text-text-bright text-2xl md:text-3xl font-bold">
-          <span className="text-primary font-mono text-xl mr-2">04.</span>Get In Touch</h2>
+          <span className="text-primary font-mono text-xl mr-2">05.</span>Get In Touch</h2>
         </div>
         <p className="text-text-dim text-lg max-w-lg mx-auto">
           Feel free to reach out for collaborations, projects, or any questions. 
