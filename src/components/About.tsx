@@ -39,8 +39,13 @@ export default function About() {
             className="text-text-dim text-lg leading-relaxed space-y-4"
           >
             <p>
-              Hello! My name is <span className="text-primary">Joy Chanda</span>. I aspire to work in a professional, 
-              goal-oriented organization where I can effectively apply my knowledge and skills.
+              Hello! My name is <span className="text-primary">Joy Chanda</span>. {JOYS_INFO.about.journey}
+            </p>
+            <p>
+              {JOYS_INFO.about.workPreference}
+            </p>
+            <p>
+              {JOYS_INFO.about.hobbies}
             </p>
             <p>
               I am confident in my ability to adapt to new environments and support the team with my capabilities. 
