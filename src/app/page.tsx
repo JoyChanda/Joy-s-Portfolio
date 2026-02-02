@@ -19,17 +19,17 @@ export default function Home() {
   const [showStartup, setShowStartup] = useState(false);
 
   useEffect(() => {
-    // Stage 1: Error Animation (0 - 10s)
+    // Stage 1: Error Animation (0 - 2.7s)
     const errorTimer = setTimeout(() => {
       setShowThisCantBeReached(false);
       setShowStartup(true);
-    }, 10000);
+    }, 2700);
 
-    // Stage 2: Startup Animation (10s - 15.9s)
+    // Stage 2: Startup Animation (2.7s - 4.7s)
     const startupTimer = setTimeout(() => {
       setShowStartup(false);
       setFinishedLoading(true);
-    }, 15900);
+    }, 4700);
 
     return () => {
       clearTimeout(errorTimer);

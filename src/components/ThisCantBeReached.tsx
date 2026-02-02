@@ -13,11 +13,11 @@ export default function ThisCantBeReached() {
     handleResize();
     window.addEventListener("resize", handleResize);
     
-    // Phase 1: Error (0-2.5s)
-    // Phase 2: Success Text (2.5s-5s)
-    // Phase 3: Emoticon moves to center (5s+)
-    const timer1 = setTimeout(() => setPhase(2), 2500);
-    const timer2 = setTimeout(() => setPhase(3), 5000);
+    // Phase 1: Error (0-0.8s)
+    // Phase 2: Success Text (0.8s-1.5s)
+    // Phase 3: Emoticon moves to center (1.5s+)
+    const timer1 = setTimeout(() => setPhase(2), 800);
+    const timer2 = setTimeout(() => setPhase(3), 1500);
     
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -66,7 +66,7 @@ export default function ThisCantBeReached() {
             {/* Eyes */}
             <motion.div
               animate={{ scaleY: [1, 0, 1] }}
-              transition={{ repeat: Infinity, repeatDelay: 3, duration: 0.2 }}
+              transition={{ repeat: Infinity, repeatDelay: 0.5, duration: 0.1 }}
               className="absolute left-2 top-3 h-1.5 w-[3.5px] bg-gray-600"
             />
             <motion.div
@@ -83,7 +83,7 @@ export default function ThisCantBeReached() {
                 y: phase === 3 ? 4 : 2,
                 scaleX: phase === 3 ? 1.4 : 0.8
               }}
-              transition={{ duration: 0.8, type: "spring", damping: 12 }}
+              transition={{ duration: 0.3, type: "spring", damping: 12 }}
               className="absolute left-3 bottom-[12px] w-3.5 bg-gray-600"
             />
             
@@ -99,8 +99,8 @@ export default function ThisCantBeReached() {
                 initial={{ opacity: 0, y: 0, scale: 0.2 }}
                 animate={{ opacity: 1, y: 10, scale: 1 }} 
                 transition={{ 
-                  delay: 1.3,
-                  duration: 0.6,
+                  delay: 0.2, 
+                  duration: 0.4,
                   type: "spring",
                   damping: 15,
                   stiffness: 120
