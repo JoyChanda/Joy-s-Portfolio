@@ -40,18 +40,24 @@ export default function Projects() {
                 index % 2 === 0 ? "md:order-1" : "md:order-2 md:col-start-6"
               }`}
             >
-              <div
-                onClick={() => setSelectedProject(project)}
-                className="block relative aspect-[16/10] bg-primary/10 rounded-lg overflow-hidden cursor-pointer"
+              <motion.div
+                whileHover={{ y: -6 }}
+                transition={{ type: "spring", stiffness: 380, damping: 28 }}
+                className="rounded-lg"
               >
-                <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-all duration-300 z-10"></div>
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-contain grayscale group-hover:grayscale-0 transition-all duration-500 rounded-lg scale-[0.98] group-hover:scale-100 p-2"
-                />
-              </div>
+                <div
+                  onClick={() => setSelectedProject(project)}
+                  className="block relative aspect-[16/10] bg-primary/10 rounded-lg overflow-hidden cursor-pointer shadow-lg transition-shadow duration-500 group-hover:shadow-[0_24px_60px_-20px_rgba(100,255,218,0.18)] ring-1 ring-primary/0 group-hover:ring-primary/25"
+                >
+                  <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-all duration-300 z-10 pointer-events-none" />
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-contain grayscale group-hover:grayscale-0 transition-all duration-500 rounded-lg scale-[0.98] group-hover:scale-100 p-2"
+                  />
+                </div>
+              </motion.div>
             </div>
 
             {/* Project Content */}
@@ -67,42 +73,56 @@ export default function Projects() {
                 {project.title}
               </h3>
 
-              <div className="bg-background-light p-6 rounded-md shadow-xl text-text-dim text-md mb-4 border border-primary/10">
+              <div className="bg-background-light p-6 rounded-md shadow-xl text-text-dim text-md mb-4 border border-primary/10 transition-[border-color,box-shadow] duration-300 group-hover:border-primary/30 group-hover:shadow-[0_0_40px_-15px_rgba(100,255,218,0.12)]">
                 <p>{project.description}</p>
               </div>
 
-              <ul className={`flex flex-wrap gap-4 font-mono text-xs text-text-dim mb-6 ${index % 2 === 0 ? "md:justify-end" : "md:justify-start"}`}>
+              <ul className={`flex flex-wrap gap-3 font-mono text-xs text-text-dim mb-6 ${index % 2 === 0 ? "md:justify-end" : "md:justify-start"}`}>
                 {project.tech.map((t, i) => (
-                  <li key={i}>{t}</li>
+                  <li key={i}>
+                    <motion.span
+                      whileHover={{ scale: 1.05, y: -1 }}
+                      className="inline-block rounded border border-primary/15 bg-primary/5 px-2.5 py-1 text-text-normal transition-colors duration-200 hover:border-primary/40 hover:text-primary"
+                    >
+                      {t}
+                    </motion.span>
+                  </li>
                 ))}
               </ul>
 
               <div className="flex items-center gap-6">
-                <button 
+                <motion.button
+                  type="button"
                   onClick={() => setSelectedProject(project)}
+                  whileHover={{ scale: 1.02, boxShadow: "0 8px 24px -8px rgba(100, 255, 218, 0.25)" }}
+                  whileTap={{ scale: 0.98 }}
                   className="text-primary border border-primary px-4 py-2 rounded font-mono text-xs hover:bg-primary-light transition-colors"
                 >
                   View Details
-                </button>
+                </motion.button>
                 <div className="flex gap-4 text-text-bright">
-                  <a
+                  <motion.a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
+                    whileHover={{ scale: 1.12, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
                     className="hover:text-primary transition-colors"
                     title="GitHub Repository"
                   >
                     <Github size={20} />
-                  </a>
-                  <a
+                  </motion.a>
+                  <motion.a
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
+                    whileHover={{ scale: 1.12, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
                     className="hover:text-primary transition-colors"
                     title="Live Demo"
                   >
                     <ExternalLink size={20} />
-                  </a>
+                  </motion.a>
                 </div>
               </div>
             </div>

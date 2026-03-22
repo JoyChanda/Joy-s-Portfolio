@@ -38,7 +38,10 @@ export default function Education() {
 
             {/* Content Card */}
             <div className={`w-full md:w-[45%] pl-8 md:pl-0 ${index % 2 === 0 ? "md:text-left" : "md:text-right"}`}>
-              <div className="bg-background-light p-6 rounded-lg border border-primary/10 hover:border-primary/40 transition-all duration-300 shadow-xl group">
+              <motion.div
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                className="bg-background-light p-6 rounded-lg border border-primary/10 hover:border-primary/45 transition-[border-color,box-shadow] duration-300 shadow-xl group hover:shadow-[0_16px_48px_-20px_rgba(100,255,218,0.12)]"
+              >
                 <div className={`flex items-center mb-2 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
                   <GraduationCap className="text-primary mr-3 ml-3" size={24} />
                   <h3 className="text-text-bright text-xl font-bold group-hover:text-primary transition-colors">
@@ -56,7 +59,7 @@ export default function Education() {
                 <div className={`p-3 rounded bg-background-dark/50 border-l-2 border-primary text-text-dim text-sm italic`}>
                   {edu.details}
                 </div>
-              </div>
+              </motion.div>
             </div>
 
             {/* Empty space for the other side on desktop */}

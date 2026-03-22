@@ -32,8 +32,9 @@ export default function SocialBar() {
             href={social.href}
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ y: -4, color: "var(--color-primary)" }}
-            className="text-text-dim transition-all duration-300"
+            whileHover={{ y: -5, scale: 1.12 }}
+            whileTap={{ scale: 0.92 }}
+            className="text-text-dim hover:text-primary transition-colors duration-300"
           >
             {social.icon}
           </motion.a>
@@ -49,8 +50,9 @@ export default function SocialBar() {
       >
         <motion.a
           href={`mailto:${JOYS_INFO.email}`}
-          whileHover={{ y: -4, color: "var(--color-primary)" }}
-          className="font-mono text-sm tracking-widest text-text-dim [writing-mode:vertical-rl] transition-all duration-300"
+          whileHover={{ y: -5, scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
+          className="font-mono text-sm tracking-widest text-text-dim hover:text-primary [writing-mode:vertical-rl] transition-colors duration-300"
         >
           {JOYS_INFO.email}
         </motion.a>

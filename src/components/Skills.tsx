@@ -34,8 +34,9 @@ export default function Skills() {
             initial={{ opacity: 0, x: catIdx % 2 === 0 ? -20 : 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: catIdx * 0.1 }}
-            viewport={{ once: true }}
-            className="bg-background-light p-8 rounded-xl border border-primary/10 hover:border-primary/30 transition-all duration-300 shadow-xl"
+            viewport={{ once: true, margin: "-40px" }}
+            whileHover={{ y: -6, transition: { duration: 0.2 } }}
+            className="bg-background-light p-8 rounded-xl border border-primary/10 hover:border-primary/35 transition-[border-color,box-shadow] duration-300 shadow-xl hover:shadow-[0_20px_50px_-24px_rgba(100,255,218,0.14)]"
           >
             <h3 className="text-text-bright font-bold mb-8 text-xl flex items-center">
               <span className="w-2 h-2 bg-primary rounded-full mr-3"></span>
@@ -44,7 +45,12 @@ export default function Skills() {
             
             <div className="space-y-6">
               {category.skills.map((skill, skillIdx) => (
-                <div key={skillIdx} className="group">
+                <motion.div
+                  key={skillIdx}
+                  className="group"
+                  whileHover={{ x: 4 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                >
                   <div className="flex justify-between items-center mb-2">
                     <span className="text-text-normal font-mono text-sm group-hover:text-primary transition-colors">
                       {skill.name}
@@ -62,7 +68,7 @@ export default function Skills() {
                       <div className="absolute top-0 right-0 h-full w-2 bg-white/20 blur-[1px]"></div>
                     </motion.div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </motion.div>

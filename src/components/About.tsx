@@ -61,7 +61,7 @@ export default function About() {
                 src="/JC.png" 
                 alt="Joy Chanda" 
                 fill
-                className="object-cover transition-all duration-300"
+                className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
               />
             </div>
           </div>

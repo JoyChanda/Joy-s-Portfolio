@@ -57,10 +57,14 @@ export default function Header() {
               >
                 <a
                   href={link.href}
-                  className="font-mono text-sm text-text-normal hover:text-primary transition-colors duration-300"
+                  className="group/nav relative inline-block py-1 font-mono text-sm text-text-normal hover:text-primary transition-colors duration-300"
                 >
                   <span className="text-primary mr-2">0{index + 1}.</span>
                   {link.name}
+                  <span
+                    className="absolute bottom-0 left-0 h-px w-full origin-left scale-x-0 bg-primary transition-transform duration-300 ease-out group-hover/nav:scale-x-100"
+                    aria-hidden
+                  />
                 </a>
               </motion.li>
             ))}
@@ -73,6 +77,8 @@ export default function Header() {
             href={JOYS_INFO.resume}
             target="_blank"
             rel="noopener noreferrer"
+            whileHover={{ y: -2, boxShadow: "0 8px 24px -8px rgba(100, 255, 218, 0.35)" }}
+            whileTap={{ scale: 0.97 }}
             className="border border-primary text-primary px-4 py-2 rounded-md font-mono text-sm hover:bg-primary-light transition-colors duration-300"
           >
             Resume

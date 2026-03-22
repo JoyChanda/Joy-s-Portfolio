@@ -42,8 +42,12 @@ export default function Contact() {
           viewport={{ once: true }}
           className="space-y-8"
         >
-          <div className="flex items-start space-x-4 group">
-            <div className="p-3 bg-background-light rounded-lg border border-primary/10 group-hover:border-primary/50 transition-colors">
+          <motion.div
+            className="flex items-start space-x-4 group"
+            whileHover={{ x: 4 }}
+            transition={{ type: "spring", stiffness: 380, damping: 28 }}
+          >
+            <div className="p-3 bg-background-light rounded-lg border border-primary/10 group-hover:border-primary/50 transition-colors duration-300 group-hover:shadow-[0_0_24px_-8px_rgba(100,255,218,0.2)]">
               <Mail className="text-primary" size={24} />
             </div>
             <div>
@@ -52,30 +56,42 @@ export default function Contact() {
                 {JOYS_INFO.email}
               </a>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="flex items-start space-x-4 group">
-            <div className="p-3 bg-background-light rounded-lg border border-primary/10 group-hover:border-primary/50 transition-colors">
+          <motion.div
+            className="flex items-start space-x-4 group"
+            whileHover={{ x: 4 }}
+            transition={{ type: "spring", stiffness: 380, damping: 28 }}
+          >
+            <div className="p-3 bg-background-light rounded-lg border border-primary/10 group-hover:border-primary/50 transition-colors duration-300 group-hover:shadow-[0_0_24px_-8px_rgba(100,255,218,0.2)]">
               <Phone className="text-primary" size={24} />
             </div>
             <div>
               <h4 className="text-text-bright font-bold mb-1">Phone</h4>
               <p className="text-text-dim">{JOYS_INFO.contactDetails.phone}</p>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="flex items-start space-x-4 group">
-            <div className="p-3 bg-background-light rounded-lg border border-primary/10 group-hover:border-primary/50 transition-colors">
+          <motion.div
+            className="flex items-start space-x-4 group"
+            whileHover={{ x: 4 }}
+            transition={{ type: "spring", stiffness: 380, damping: 28 }}
+          >
+            <div className="p-3 bg-background-light rounded-lg border border-primary/10 group-hover:border-primary/50 transition-colors duration-300 group-hover:shadow-[0_0_24px_-8px_rgba(100,255,218,0.2)]">
               <MapPin className="text-primary" size={24} />
             </div>
             <div>
               <h4 className="text-text-bright font-bold mb-1">Location</h4>
               <p className="text-text-dim">{JOYS_INFO.contactDetails.location}</p>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="flex items-start space-x-4 group">
-            <div className="p-3 bg-background-light rounded-lg border border-primary/10 group-hover:border-primary/50 transition-colors">
+          <motion.div
+            className="flex items-start space-x-4 group"
+            whileHover={{ x: 4 }}
+            transition={{ type: "spring", stiffness: 380, damping: 28 }}
+          >
+            <div className="p-3 bg-background-light rounded-lg border border-primary/10 group-hover:border-primary/50 transition-colors duration-300 group-hover:shadow-[0_0_24px_-8px_rgba(100,255,218,0.2)]">
               <Clock className="text-primary" size={24} />
             </div>
             <div>
@@ -84,7 +100,7 @@ export default function Contact() {
                 {JOYS_INFO.contactDetails.availability}
               </p>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* 3. Social / Action Section */}
@@ -93,43 +109,78 @@ export default function Contact() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="bg-background-light p-8 rounded-xl border border-primary/10 shadow-2xl flex flex-col items-center text-center group"
+          whileHover={{ y: -4, transition: { duration: 0.25 } }}
+          className="bg-background-light p-8 rounded-xl border border-primary/10 shadow-2xl flex flex-col items-center text-center group transition-[border-color,box-shadow] duration-300 hover:border-primary/25 hover:shadow-[0_24px_60px_-28px_rgba(100,255,218,0.15)]"
         >
-          <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+          <motion.div
+            className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-6 cursor-default"
+            whileHover={{ scale: 1.08 }}
+            transition={{ type: "spring", stiffness: 400, damping: 20 }}
+          >
              <Mail className="text-primary" size={40} />
-          </div>
+          </motion.div>
           <h3 className="text-text-bright text-2xl font-bold mb-4">Start a Conversation</h3>
           <p className="text-text-dim mb-8">
             The quickest way to reach me is via email. Let&apos;s build something amazing together!
           </p>
-          <a
+          <motion.a
             href={`mailto:${JOYS_INFO.email}`}
-            className="w-full inline-block border-2 border-primary text-primary px-8 py-4 rounded-md font-mono text-lg hover:bg-primary-light transition-all duration-300 transform hover:-translate-y-1"
+            whileHover={{ y: -3, boxShadow: "0 14px 36px -10px rgba(100, 255, 218, 0.3)" }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full inline-block border-2 border-primary text-primary px-8 py-4 rounded-md font-mono text-lg hover:bg-primary-light transition-colors duration-300 text-center"
           >
             Say Hello
-          </a>
+          </motion.a>
 
           <div className="flex space-x-6 mt-10">
-            <a href={JOYS_INFO.socials.github} target="_blank" rel="noreferrer" className="text-text-dim hover:text-primary transition-colors">
+            <motion.a
+              href={JOYS_INFO.socials.github}
+              target="_blank"
+              rel="noreferrer"
+              whileHover={{ y: -3, scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="text-text-dim hover:text-primary transition-colors"
+            >
               <Github size={24} />
-            </a>
-            <a href={JOYS_INFO.socials.linkedin} target="_blank" rel="noreferrer" className="text-text-dim hover:text-primary transition-colors">
+            </motion.a>
+            <motion.a
+              href={JOYS_INFO.socials.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              whileHover={{ y: -3, scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="text-text-dim hover:text-primary transition-colors"
+            >
               <Linkedin size={24} />
-            </a>
-            <a href={JOYS_INFO.socials.whatsapp} target="_blank" rel="noreferrer" className="text-text-dim hover:text-primary transition-colors">
+            </motion.a>
+            <motion.a
+              href={JOYS_INFO.socials.whatsapp}
+              target="_blank"
+              rel="noreferrer"
+              whileHover={{ y: -3, scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="text-text-dim hover:text-primary transition-colors"
+            >
               <WhatsAppIcon size={24} />
-            </a>
+            </motion.a>
           </div>
         </motion.div>
       </div>
 
       {/* 5. Footer */}
       <footer className="mt-32 pt-10 border-t border-text-dim/10 flex flex-col items-center">
-        <ul className="flex items-center space-x-6 md:space-x-8 mb-8">
+        <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 md:gap-x-8 mb-8">
           {NAV_LINKS.map((link) => (
             <li key={link.name}>
-              <a href={link.href} className="text-text-dim hover:text-primary text-sm font-mono transition-colors">
+              <a
+                href={link.href}
+                className="group/ft relative text-text-dim hover:text-primary text-sm font-mono transition-colors"
+              >
                 {link.name}
+                <span
+                  className="absolute -bottom-0.5 left-0 h-px w-full origin-center scale-x-0 bg-primary transition-transform duration-300 group-hover/ft:scale-x-100"
+                  aria-hidden
+                />
               </a>
             </li>
           ))}
