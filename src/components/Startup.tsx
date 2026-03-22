@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
  * and then transitions to the top-left corner
  */
 const Startup = () => {
+  const [parallax, setParallax] = useState({ x: 0, y: 0 });
   const [windowInfo, setWindowInfo] = useState({
     WidthBy2: 0,
     HeightBy2: 0,
@@ -46,12 +47,24 @@ const Startup = () => {
 
   if (!windowInfo.isReady) return null;
 
+  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    const el = e.currentTarget;
+    const r = el.getBoundingClientRect();
+    const cx = r.left + r.width / 2;
+    const cy = r.top + r.height / 2;
+    setParallax({
+      x: ((e.clientX - cx) / r.width) * 14,
+      y: ((e.clientY - cy) / r.height) * 14,
+    });
+  };
+
   return (
     <motion.div
       initial={{ opacity: 1 }}
       animate={{ opacity: 0 }}
       transition={{ opacity: { delay: 1.9, duration: 0 } }}
-      className="fixed inset-0 z-[110] flex justify-center items-center bg-StartupBackground"
+      onPointerMove={onPointerMove}
+      className="fixed inset-0 z-[110] flex flex-col justify-center items-center gap-10 bg-StartupBackground"
     >
       {/* Main container that will move to top-left */}
       <motion.div
@@ -70,6 +83,13 @@ const Startup = () => {
         }}
         className="relative h-24 w-24 flex justify-center items-center"
       >
+        <div
+          className="absolute inset-0 flex items-center justify-center"
+          style={{
+            transform: `translate(${parallax.x}px, ${parallax.y}px)`,
+            transition: "transform 0.2s ease-out",
+          }}
+        >
         {/* Horizontal bar on the right */}
         <motion.div
           initial={{ scale: 0, x: 0 }}
@@ -160,7 +180,21 @@ const Startup = () => {
         >
           J
         </motion.span>
+        </div>
       </motion.div>
+
+      <motion.p
+        initial={{ opacity: 0, y: 6 }}
+        animate={{ opacity: [0, 1, 1, 0], y: [6, 0, 0, -4] }}
+        transition={{
+          duration: 1.45,
+          times: [0, 0.12, 0.72, 1],
+          ease: "easeOut",
+        }}
+        className="pointer-events-none font-mono text-[10px] uppercase tracking-[0.4em] text-text-dim md:text-xs"
+      >
+        Preparing workspace
+      </motion.p>
     </motion.div>
   );
 };

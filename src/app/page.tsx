@@ -19,20 +19,20 @@ export default function Home() {
   const [showStartup, setShowStartup] = useState(false);
 
   useEffect(() => {
-    // Stage 1: Error Animation (0 - 2.7s)
-    const errorTimer = setTimeout(() => {
+    // Stage 1: Welcome intro (0 - 2.7s)
+    const welcomeTimer = setTimeout(() => {
       setShowThisCantBeReached(false);
       setShowStartup(true);
     }, 2700);
 
-    // Stage 2: Startup Animation (2.7s - 4.7s)
+    // Stage 2: Logo / startup (2.7s - 4.7s)
     const startupTimer = setTimeout(() => {
       setShowStartup(false);
       setFinishedLoading(true);
     }, 4700);
 
     return () => {
-      clearTimeout(errorTimer);
+      clearTimeout(welcomeTimer);
       clearTimeout(startupTimer);
     };
   }, [setFinishedLoading]);

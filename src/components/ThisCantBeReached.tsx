@@ -1,226 +1,154 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useCallback } from "react";
+import { motion } from "framer-motion";
+
+const letterVariants = {
+  hidden: { opacity: 0, y: 28, rotateX: -40 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    rotateX: 0,
+    transition: {
+      delay: 0.15 + i * 0.06,
+      duration: 0.55,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
+  }),
+};
 
 export default function ThisCantBeReached() {
-  const [phase, setPhase] = useState(1);
-  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
+  const [glow, setGlow] = useState({ x: 50, y: 45 });
 
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowSize({ width: window.innerWidth, height: window.innerHeight });
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    
-    // Phase 1: Error (0-0.8s)
-    // Phase 2: Success Text (0.8s-1.5s)
-    // Phase 3: Emoticon moves to center (1.5s+)
-    const timer1 = setTimeout(() => setPhase(2), 800);
-    const timer2 = setTimeout(() => setPhase(3), 1500);
-    
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      clearTimeout(timer1);
-      clearTimeout(timer2);
-    };
+  const onPointerMove = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
+    const el = e.currentTarget;
+    const r = el.getBoundingClientRect();
+    setGlow({
+      x: ((e.clientX - r.left) / r.width) * 100,
+      y: ((e.clientY - r.top) / r.height) * 100,
+    });
   }, []);
 
-  // Standard Chrome error page layout constants
-  const pagePadding = {
-    top: windowSize.width > 768 ? 72 : 48,
-    left: windowSize.width > 768 ? 96 : 32, // Adjusted for mobile realism
-    maxWidth: 600
-  };
+  const welcome = "Welcome";
 
   return (
-    <motion.div
-      initial={{ opacity: 1 }}
-      animate={{ opacity: 0 }}
-      transition={{ delay: 10, duration: 0.5 }}
-      className="fixed inset-0 z-[110] bg-white overflow-hidden font-sans select-none"
+    <div
+      onPointerMove={onPointerMove}
+      className="fixed inset-0 z-[110] select-none overflow-hidden bg-StartupBackground"
     >
-      <div className="relative w-full h-full">
-        
-        {/* The "Emoticon" (Dino-like) */}
-        <motion.div
-          animate={{
-            x: phase < 3 ? pagePadding.left : windowSize.width / 2 - 20,
-            y: phase < 3 ? pagePadding.top : windowSize.height / 2 - 80,
-            scale: phase === 3 ? (windowSize.width > 768 ? 2.5 : 2) : 1,
-          }}
-          transition={{
-            duration: 1.2,
-            type: "spring",
-            damping: 20,
-            stiffness: 80,
-          }}
-          className="absolute z-20 flex flex-col items-center"
-        >
-          <div className="relative w-10 h-11">
-            <div className="absolute h-1 w-1/2 bg-gray-600"></div>
-            <div className="absolute h-full w-1 bg-gray-600"></div>
-            <div className="absolute bottom-0 h-1 w-full bg-gray-600"></div>
-            <div className="absolute right-0 bottom-0 h-6 w-1 bg-gray-600"></div>
-            
-            {/* Eyes */}
-            <motion.div
-              animate={{ scaleY: [1, 0, 1] }}
-              transition={{ repeat: Infinity, repeatDelay: 0.5, duration: 0.1 }}
-              className="absolute left-2 top-3 h-1.5 w-[3.5px] bg-gray-600"
-            />
-            <motion.div
-              animate={{ scaleY: [1, 0, 1] }}
-              transition={{ repeat: Infinity, repeatDelay: 3, duration: 0.2 }}
-              className="absolute right-2 top-3 h-1.5 w-[3.5px] bg-gray-600"
-            />
+      {/* Interactive spotlight — follows cursor */}
+      <div
+        className="pointer-events-none absolute inset-0 transition-[background] duration-300 ease-out"
+        style={{
+          background: `radial-gradient(ellipse 90% 70% at ${glow.x}% ${glow.y}%, rgba(100, 255, 218, 0.11), transparent 55%)`,
+        }}
+      />
 
-            {/* Mouth: Change from deep Sad Curve to Smile Curve */}
-            <motion.div
-              animate={{
-                borderRadius: phase === 3 ? "0 0 100px 100px" : "40px 40px 0 0",
-                height: phase === 3 ? "5px" : "4px",
-                y: phase === 3 ? 4 : 2,
-                scaleX: phase === 3 ? 1.4 : 0.8
-              }}
-              transition={{ duration: 0.3, type: "spring", damping: 12 }}
-              className="absolute left-3 bottom-[12px] w-3.5 bg-gray-600"
-            />
-            
-            {/* Props */}
-            <div className="absolute right-4 top-0 h-[18px] w-1 bg-gray-600 rotate-[-90deg] translate-x-[9px] translate-y-[-7px]" />
-            <div className="absolute right-0 top-[14px] h-1 w-4 bg-gray-600 rotate-[90deg] translate-x-[6px] translate-y-[-7px]" />
+      {/* Subtle grid */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.07]"
+        style={{
+          backgroundImage: `linear-gradient(rgba(100, 255, 218, 0.4) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(100, 255, 218, 0.4) 1px, transparent 1px)`,
+          backgroundSize: "48px 48px",
+        }}
+      />
+
+      <div className="relative flex min-h-full flex-col items-center justify-center px-6 pb-20 pt-12 md:px-12">
+        {/* Corner accents */}
+        <div className="pointer-events-none absolute left-6 top-6 h-16 w-16 border-l-2 border-t-2 border-AAsecondary/35 md:left-10 md:top-10" />
+        <div className="pointer-events-none absolute bottom-6 right-6 h-16 w-16 border-b-2 border-r-2 border-AAsecondary/35 md:bottom-10 md:right-10" />
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="relative max-w-2xl text-center"
+        >
+          <motion.p
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.05, duration: 0.5 }}
+            className="mb-3 font-mono text-[11px] uppercase tracking-[0.35em] text-text-dim md:text-xs md:tracking-[0.45em]"
+          >
+            Welcome to Joy Chanda's World
+          </motion.p>
+
+          <div className="mb-2 flex flex-wrap justify-center gap-[0.12em] perspective-[800px] md:gap-[0.08em]">
+            {welcome.split("").map((char, i) => (
+              <motion.span
+                key={`${char}-${i}`}
+                custom={i}
+                variants={letterVariants}
+                initial="hidden"
+                animate="visible"
+                className="inline-block text-5xl font-semibold text-text-bright md:text-7xl lg:text-8xl"
+                style={{ fontFamily: "var(--font-about), serif" }}
+              >
+                {char}
+              </motion.span>
+            ))}
           </div>
 
-          {/* "Hello!!!" dropdown from emoticon */}
-          <AnimatePresence>
-            {phase === 3 && (
-              <motion.div
-                initial={{ opacity: 0, y: 0, scale: 0.2 }}
-                animate={{ opacity: 1, y: 10, scale: 1 }} 
-                transition={{ 
-                  delay: 0.2, 
-                  duration: 0.4,
-                  type: "spring",
-                  damping: 15,
-                  stiffness: 120
-                }}
-                className="mt-[-10px]" // Almost no gap now
-              >
-                <h2 className="text-[#3c4043] text-sm md:text-lg font-extrabold tracking-tight">
-                  Hello!!!
-                </h2>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          <motion.div
+            initial={{ scaleX: 0, opacity: 0 }}
+            animate={{ scaleX: 1, opacity: 1 }}
+            transition={{
+              delay: 0.65,
+              duration: 0.85,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="mx-auto mb-8 h-px w-24 origin-center bg-gradient-to-r from-transparent via-AAsecondary to-transparent md:w-32"
+          />
+
+          <motion.p
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.75, duration: 0.55 }}
+            className="mx-auto max-w-md text-base leading-relaxed text-text-normal md:text-lg"
+          >
+            Glad you&apos;re here. Take a look around projects, skills, and how
+            to reach me are just ahead.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1, duration: 0.5 }}
+            className="mt-10 flex flex-col items-center gap-5"
+          >
+            <motion.button
+              type="button"
+              whileHover={{
+                scale: 1.03,
+                boxShadow: "0 0 28px rgba(100, 255, 218, 0.25)",
+              }}
+              whileTap={{ scale: 0.98 }}
+              className="cursor-default rounded-md border border-AAsecondary/40 bg-primary-light px-8 py-3 text-sm font-medium tracking-wide text-AAsecondary backdrop-blur-sm md:px-10 md:text-base"
+            >
+              Enter experience
+            </motion.button>
+
+            <p className="font-mono text-[10px] text-text-dim/80 md:text-[11px]">
+              Joy Chanda - lighting follows you
+            </p>
+          </motion.div>
         </motion.div>
 
-        {/* Browser Error Text Content (Left Aligned) */}
-        <div 
-          className="absolute pr-8" // Added right padding for mobile
-          style={{ 
-            top: pagePadding.top + (windowSize.width > 768 ? 70 : 60), 
-            left: pagePadding.left,
-            maxWidth: pagePadding.maxWidth 
-          }}
+        {/* Progress strip — visual rhythm until handoff to logo */}
+        <motion.div
+          className="absolute bottom-0 left-0 right-0 h-[3px] bg-text-dim/15"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
         >
-          <AnimatePresence mode="wait">
-            {phase === 1 && (
-              <motion.div
-                key="error"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.4 }}
-                className="space-y-4 md:space-y-6"
-              >
-                <h1 className="text-[#3c4043] text-[18px] md:text-[28px] font-normal leading-tight">
-                  This site can&apos;t be reached
-                </h1>
-                <p className="text-[#5f6368] text-[13px] md:text-base leading-relaxed">
-                  <span className="font-bold underline">www.joychanda.com</span> unexpectedly closed the connection.
-                </p>
-                <div className="space-y-4">
-                  <span className="text-[#5f6368] text-[13px] md:text-base block">Try:</span>
-                  <ul className="space-y-3 pl-4 text-[13px] md:text-base text-[#5f6368]">
-                    <li className="flex items-center gap-3">
-                      <span className="text-xl leading-none">&bull;</span> Checking the connection
-                    </li>
-                    <li className="flex items-center gap-3 text-[#1a73e8] cursor-pointer hover:underline">
-                      <span className="text-[#5f6368] text-xl leading-none">&bull;</span> Checking the proxy and the firewall
-                    </li>
-                  </ul>
-                </div>
-                <div className="pt-4">
-                  <p className="text-[#70757a] text-[10px] md:text-[11px] font-mono uppercase tracking-wider mb-6">
-                    ERR_CONNECTION_CLOSED
-                  </p>
-                  <button className="px-6 py-2 bg-[#1a73e8] rounded-[4px] text-white text-sm font-medium shadow-sm active:bg-[#1557b0] transition-colors">
-                    Reload
-                  </button>
-                </div>
-              </motion.div>
-            )}
-
-            {phase === 2 && (
-              <motion.div
-                key="success"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.4 }}
-                className="space-y-6"
-              >
-                <h1 className="text-[#3c4043] text-[20px] md:text-[28px] font-normal leading-tight">
-                  This site <span className="font-bold">actually can</span> be reached
-                </h1>
-                <p className="text-[#5f6368] text-[13px] md:text-base leading-relaxed">
-                  <span className="font-bold">www.joychanda.com</span> unexpectedly <span className="font-bold">opened</span> the connection.
-                </p>
-                <div className="space-y-4">
-                  <span className="text-[#5f6368] text-[13px] md:text-base block">Try:</span>
-                  <ul className="space-y-3 pl-4 text-[13px] md:text-base text-[#5f6368]">
-                    <li className="flex items-center gap-3">
-                      <span className="text-xl leading-none">&bull;</span> Checking the connection
-                    </li>
-                    <li className="flex items-center gap-3 text-[#1a73e8] cursor-pointer hover:underline">
-                      <span className="text-[#5f6368] text-xl leading-none">&bull;</span> Checking the proxy and the firewall
-                    </li>
-                    <li className="flex items-center gap-3 text-[#1a73e8] cursor-pointer hover:underline">
-                      <span className="text-[#5f6368] text-xl leading-none">&bull;</span> Running Windows Network Diagnostics
-                    </li>
-                  </ul>
-                </div>
-                <div className="pt-4">
-                  <p className="text-[#70757a] text-[10px] md:text-[11px] font-mono uppercase tracking-wider mb-6">
-                    SUCC_CONNECTION_OPENED
-                  </p>
-                  <button className="px-6 py-2 bg-[#1a73e8] rounded-[4px] text-white text-sm font-medium shadow-sm active:bg-[#1557b0] transition-colors">
-                    Start
-                  </button>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-
-        {/* Final Bottom Text */}
-        <AnimatePresence>
-          {phase === 3 && (
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.5, duration: 1 }}
-              className="absolute bottom-16 md:bottom-24 left-0 right-0 flex justify-center"
-            >
-              <span className="text-gray-400 font-mono text-xs md:text-base tracking-[0.4em] md:tracking-[0.5em] uppercase text-center px-4 font-medium">
-                Thanks for Visiting
-              </span>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
+          <motion.div
+            className="h-full bg-AAsecondary/70"
+            initial={{ scaleX: 0, originX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 2.5, ease: [0.4, 0, 0.2, 1] }}
+          />
+        </motion.div>
       </div>
-    </motion.div>
+    </div>
   );
 }
