@@ -4,7 +4,7 @@ Welcome to my professional portfolio! This website is built with **Next.js**, **
 
 ## 🚀 Live Demo
 
-Check out the live version of my portfolio here: https://joys-portfolio-gamma.vercel.app/
+Check out the live version of my portfolio here: https://joy-chanda14.vercel.app/
 
 ![Preview 1](public/1.png)
 ![Preview 2](public/2.png)
